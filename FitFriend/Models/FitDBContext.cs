@@ -12,7 +12,7 @@ namespace FitFriend.Models
         {
             Database.SetInitializer<FitDBContext>(new DropCreateDatabaseIfModelChanges<FitDBContext>());
         }
-        public DbSet<Calories> Calories { get; set; }
+        public DbSet<Food> Food { get; set; }
         public DbSet<Exercises> Exercises { get; set; }
     }
 }

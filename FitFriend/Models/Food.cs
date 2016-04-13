@@ -5,7 +5,7 @@ using System.Web;
 
 namespace FitFriend.Models
 {
-    public class Calories
+    public class Food
     {
     }
 }
