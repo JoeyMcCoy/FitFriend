@@ -20,13 +20,10 @@
                 @Html.ActionLink("FitFriend", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Cal/Exc Tracker", "Cal/Exc Tracker", "Home")</li>
+                <ul class="nav navbar-nav">                    
+                    <li>@Html.ActionLink("Track Calories/Exercises", "Track", "Home")</li>
                     <li>@Html.ActionLink("BMI", "BMI", "Home")</li>
-                    <li>@Html.ActionLink("Recipe", "Recipe", "Home")</li>
+                    <li>@Html.ActionLink("Recipes", "Recipes", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

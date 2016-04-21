@@ -52,7 +52,7 @@ namespace FitFriend.Controllers
             {
                 db.Food.Add(food);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("../Home/Track");
             }
 
             return View(food);
