@@ -18,13 +18,4 @@ namespace FitFriend.Models
         public int Calories { get; set; }
 
     }
-    public class FitDBContext : DbContext
-    {
-        public FitDBContext() : base("SQLAzureConnection")
-        {
-            Database.SetInitializer<FitDBContext>(new DropCreateDatabaseIfModelChanges<FitDBContext>());
-        }
-        public DbSet<Food> Food { get; set; }
-      
-    }
 }
