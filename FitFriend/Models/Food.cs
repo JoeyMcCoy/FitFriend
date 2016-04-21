@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Data.Entity;
 
 namespace FitFriend.Models
 {
@@ -16,5 +17,14 @@ namespace FitFriend.Models
         [Required]
         public int Calories { get; set; }
 
+    }
+    public class FitDBContext : DbContext
+    {
+        public FitDBContext() : base("SQLAzureConnection")
+        {
+            Database.SetInitializer<FitDBContext>(new DropCreateDatabaseIfModelChanges<FitDBContext>());
+        }
+        public DbSet<Food> Food { get; set; }
+      
     }
 }
