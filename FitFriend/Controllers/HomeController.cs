@@ -35,6 +35,10 @@ namespace FitFriend.Controllers
             model.Add(db.Exercises.ToList());
             return View(model);
         }
+        public ActionResult Recipes()
+        {
+            return View();
+        }
        
     }
 }
