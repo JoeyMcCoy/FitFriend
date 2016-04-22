@@ -1,3 +1,24 @@
-﻿@{
-    ViewBag.Title = "Contact";
+﻿@model IEnumerable<object>
+    @{
+        ViewBag.Title = "Recipes";
+        List<FitFriend.Models.Recipe> Recipe = Model.ToList()[0] as List<FitFriend.Models.Recipe>;
+    }
+<br /><br />
+<a href="../Recipes/Create" class="btn btn-success btn-sm">
+    <span class="glyphicon glyphicon-plus"></span><strong> Add Your Own Healthy Recipe</strong>
+</a>
+<br />
+
+@foreach (var item in Recipe)
+{
+    <div class="row">
+        
+        <div class="col-md-12">
+            <h2><strong>@item.Name</strong></h2>
+            <h4><strong>Ingredients</strong></h4>
+            <p>@item.Ingredients</p>
+            <h4><strong>Directions</strong></h4>
+            <p>@item.Directions</p>
+        </div>
+    </div><br />
 }
