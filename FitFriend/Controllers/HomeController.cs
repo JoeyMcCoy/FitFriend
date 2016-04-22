@@ -42,7 +42,10 @@ namespace FitFriend.Controllers
         }
         public ActionResult Recipes()
         {
-            return View();
+            List<object> model = new List<object>();
+            model.Add(db.Recipes.ToList());
+            model.Add(db.Recipes.ToList());
+            return View(model);
         }
        
     }
