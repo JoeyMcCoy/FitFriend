@@ -43,8 +43,14 @@
         </td>
     </tr>
 }
-
 </table>
+<div class="row">
+    <div class="col-lg-4"></div>
+    <div class="well well-sm col-lg-4">
+        <h3 style="text-align:center;"><strong>Total Calories Burned: @Model.Sum(a => a.CaloriesBurned)</strong></h3>
+    </div>
+    <div class="col-lg-4"></div>
+</div>
 
 
 

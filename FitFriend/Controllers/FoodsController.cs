@@ -20,6 +20,7 @@ namespace FitFriend.Controllers
         {
             var currentUser = User.Identity.GetUserId();
             var food = db.Food.Where(x => x.ApplicationUserID == currentUser);
+            var total = db.Food.Sum(o => o.Calories);
             return View(food);
             
         }
