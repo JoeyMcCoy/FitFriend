@@ -42,6 +42,10 @@ namespace FitFriend.Controllers
             model.Add(db.Recipes.ToList());
             return View(model);
         }
-       
+        public ActionResult BMI()
+        {
+            return View();
+        }
+
     }
 }
