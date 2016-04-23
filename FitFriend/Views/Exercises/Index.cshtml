@@ -1,14 +1,17 @@
 ﻿@model IEnumerable<FitFriend.Models.Exercises>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Your Exercises";
 }
 
-<h2>Index</h2>
+<h2>Your Exercises</h2><br />
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <a href="../Exercises/Create" class="btn btn-primary btn-lg">
+        <span class="glyphicon glyphicon-plus"></span><strong> Add an Exercise</strong>
+    </a><br /><br />
 </p>
+
 <table class="table">
     <tr>
         <th>
@@ -34,8 +37,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.CaloriesBurned)
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+        <td>            
             @Html.ActionLink("Details", "Details", new { id=item.ID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.ID })
         </td>
@@ -43,3 +45,6 @@
 }
 
 </table>
+
+
+

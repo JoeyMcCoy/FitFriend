@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using FitFriend.Models;
+using Microsoft.AspNet.Identity;
 
 namespace FitFriend.Controllers
 {
@@ -17,7 +18,9 @@ namespace FitFriend.Controllers
         // GET: Exercises
         public ActionResult Index()
         {
-            return View(db.Exercises.ToList());
+            var currentUser = User.Identity.GetUserId();
+            var exercise = db.Exercises.Where(x => x.ApplicationUserID == currentUser);
+            return View(exercise);           
         }
 
         // GET: Exercises/Details/5
@@ -50,9 +53,10 @@ namespace FitFriend.Controllers
         {
             if (ModelState.IsValid)
             {
+                exercises.ApplicationUserID = User.Identity.GetUserId();
                 db.Exercises.Add(exercises);
                 db.SaveChanges();
-                return RedirectToAction("../Home/Track");
+                return RedirectToAction("Index");
             }
 
             return View(exercises);
