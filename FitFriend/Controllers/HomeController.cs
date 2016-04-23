@@ -28,20 +28,6 @@ namespace FitFriend.Controllers
             return View();
         }
         FitDBContext db = new FitDBContext();
-<<<<<<< HEAD
-        public ActionResult Track()
-        {
-            List<object> model = new List<object>();
-            model.Add(db.Food.ToList());
-            model.Add(db.Exercises.ToList());
-            return View(model);
-        }
-
-        public ActionResult BMI()
-        {
-            return View();
-        }
-=======
     //    public ActionResult Track()
       //  {
        //     List<object> model = new List<object>();
@@ -50,17 +36,12 @@ namespace FitFriend.Controllers
        //     return View(model);
        // }
        
->>>>>>> refs/remotes/JoeyMcCoy/master
         public ActionResult Recipes()
         {
             List<object> model = new List<object>();
             model.Add(db.Recipes.ToList());
             return View(model);
         }
-        public ActionResult BMI()
-        {
-            return View();
-        }
-
+      
     }
 }
