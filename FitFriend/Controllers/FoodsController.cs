@@ -14,7 +14,7 @@ namespace FitFriend.Controllers
     public class FoodsController : Controller
     {
         private FitDBContext db = new FitDBContext();
-
+        [Authorize]
         // GET: Foods
         public ActionResult Index()
         {
@@ -23,7 +23,7 @@ namespace FitFriend.Controllers
             return View(food);
             
         }
-
+        [Authorize]
         // GET: Foods/Details/5
         public ActionResult Details(int? id)
         {
@@ -38,7 +38,7 @@ namespace FitFriend.Controllers
             }
             return View(food);
         }
-
+        [Authorize]
         // GET: Foods/Create
         public ActionResult Create()
         {
@@ -62,7 +62,7 @@ namespace FitFriend.Controllers
 
             return View(food);
         }
-
+        [Authorize]
         // GET: Foods/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -93,7 +93,7 @@ namespace FitFriend.Controllers
             }
             return View(food);
         }
-
+        [Authorize]
         // GET: Foods/Delete/5
         public ActionResult Delete(int? id)
         {

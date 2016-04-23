@@ -14,7 +14,7 @@ namespace FitFriend.Controllers
     public class ExercisesController : Controller
     {
         private FitDBContext db = new FitDBContext();
-
+        [Authorize]
         // GET: Exercises
         public ActionResult Index()
         {
@@ -22,7 +22,7 @@ namespace FitFriend.Controllers
             var exercise = db.Exercises.Where(x => x.ApplicationUserID == currentUser);
             return View(exercise);           
         }
-
+        [Authorize]
         // GET: Exercises/Details/5
         public ActionResult Details(int? id)
         {
@@ -37,7 +37,7 @@ namespace FitFriend.Controllers
             }
             return View(exercises);
         }
-
+        [Authorize]
         // GET: Exercises/Create
         public ActionResult Create()
         {
@@ -61,7 +61,7 @@ namespace FitFriend.Controllers
 
             return View(exercises);
         }
-
+        [Authorize]
         // GET: Exercises/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -92,7 +92,7 @@ namespace FitFriend.Controllers
             }
             return View(exercises);
         }
-
+        [Authorize]
         // GET: Exercises/Delete/5
         public ActionResult Delete(int? id)
         {
