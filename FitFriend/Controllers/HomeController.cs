@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FitFriend.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -26,5 +27,26 @@ namespace FitFriend.Controllers
 
             return View();
         }
+        FitDBContext db = new FitDBContext();
+        public ActionResult Track()
+        {
+            List<object> model = new List<object>();
+            model.Add(db.Food.ToList());
+            model.Add(db.Exercises.ToList());
+            return View(model);
+        }
+
+        public ActionResult BMI()
+        {
+            return View();
+        }
+        public ActionResult Recipes()
+        {
+            List<object> model = new List<object>();
+            model.Add(db.Recipes.ToList());
+            model.Add(db.Recipes.ToList());
+            return View(model);
+        }
+       
     }
 }

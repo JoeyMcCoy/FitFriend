@@ -6,13 +6,14 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FitFriend.Models
 {
-    public class Exercises
-    {     
-        public int ID { get; set; }
+    public class Recipe
+    {
+        public int Id { get; set; }
         [Required]
         public string Name { get; set; }
-        public string Description { get; set; }
         [Required]
-        public int CaloriesBurned { get; set; }
+        public string Ingredients { get; set; }
+        [Required]
+        public string Directions { get; set; }
     }
 }
