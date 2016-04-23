@@ -15,5 +15,6 @@ namespace FitFriend.Models
         public DbSet<Food> Food { get; set; }
         public DbSet<Exercises> Exercises { get; set; }
         public DbSet<Recipe> Recipes { get; set; }
-   }
+        public object Exercise { get; internal set; }
+    }
 }

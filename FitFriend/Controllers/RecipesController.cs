@@ -13,13 +13,13 @@ namespace FitFriend.Controllers
     public class RecipesController : Controller
     {
         private FitDBContext db = new FitDBContext();
-
+        [Authorize]
         // GET: Recipes
         public ActionResult Index()
         {
             return View(db.Recipes.ToList());
         }
-
+        [Authorize]
         // GET: Recipes/Details/5
         public ActionResult Details(int? id)
         {
@@ -34,7 +34,7 @@ namespace FitFriend.Controllers
             }
             return View(recipe);
         }
-
+        [Authorize]
         // GET: Recipes/Create
         public ActionResult Create()
         {
@@ -57,7 +57,7 @@ namespace FitFriend.Controllers
 
             return View(recipe);
         }
-
+        [Authorize]
         // GET: Recipes/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -88,7 +88,7 @@ namespace FitFriend.Controllers
             }
             return View(recipe);
         }
-
+        [Authorize]
         // GET: Recipes/Delete/5
         public ActionResult Delete(int? id)
         {
