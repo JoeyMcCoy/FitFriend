@@ -15,14 +15,14 @@ namespace FitFriend.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "FitFriend is an easy-to-use application for tracking your personal fitness and diet information!";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Contact FitFriend today!";
 
             return View();
         }
