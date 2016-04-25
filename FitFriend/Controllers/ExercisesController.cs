@@ -7,19 +7,22 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using FitFriend.Models;
+using Microsoft.AspNet.Identity;
 
 namespace FitFriend.Controllers
 {
     public class ExercisesController : Controller
     {
         private FitDBContext db = new FitDBContext();
-
+        [Authorize]
         // GET: Exercises
         public ActionResult Index()
         {
-            return View(db.Exercises.ToList());
+            var currentUser = User.Identity.GetUserId();
+            var exercise = db.Exercises.Where(x => x.ApplicationUserID == currentUser);
+            return View(exercise);           
         }
-
+        [Authorize]
         // GET: Exercises/Details/5
         public ActionResult Details(int? id)
         {
@@ -34,7 +37,7 @@ namespace FitFriend.Controllers
             }
             return View(exercises);
         }
-
+        [Authorize]
         // GET: Exercises/Create
         public ActionResult Create()
         {
@@ -50,14 +53,15 @@ namespace FitFriend.Controllers
         {
             if (ModelState.IsValid)
             {
+                exercises.ApplicationUserID = User.Identity.GetUserId();
                 db.Exercises.Add(exercises);
                 db.SaveChanges();
-                return RedirectToAction("../Home/Track");
+                return RedirectToAction("Index");
             }
 
             return View(exercises);
         }
-
+        [Authorize]
         // GET: Exercises/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -88,7 +92,7 @@ namespace FitFriend.Controllers
             }
             return View(exercises);
         }
-
+        [Authorize]
         // GET: Exercises/Delete/5
         public ActionResult Delete(int? id)
         {

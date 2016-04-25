@@ -7,19 +7,24 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using FitFriend.Models;
+using Microsoft.AspNet.Identity;
 
 namespace FitFriend.Controllers
 {
     public class FoodsController : Controller
     {
         private FitDBContext db = new FitDBContext();
-
+        [Authorize]
         // GET: Foods
         public ActionResult Index()
         {
-            return View(db.Food.ToList());
+            var currentUser = User.Identity.GetUserId();
+            var food = db.Food.Where(x => x.ApplicationUserID == currentUser);
+            var total = db.Food.Sum(o => o.Calories);
+            return View(food);
+            
         }
-
+        [Authorize]
         // GET: Foods/Details/5
         public ActionResult Details(int? id)
         {
@@ -34,7 +39,7 @@ namespace FitFriend.Controllers
             }
             return View(food);
         }
-
+        [Authorize]
         // GET: Foods/Create
         public ActionResult Create()
         {
@@ -50,14 +55,15 @@ namespace FitFriend.Controllers
         {
             if (ModelState.IsValid)
             {
+                food.ApplicationUserID = User.Identity.GetUserId();
                 db.Food.Add(food);
                 db.SaveChanges();
-                return RedirectToAction("../Home/Track");
+                return RedirectToAction("Index");
             }
 
             return View(food);
         }
-
+        [Authorize]
         // GET: Foods/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -88,7 +94,7 @@ namespace FitFriend.Controllers
             }
             return View(food);
         }
-
+        [Authorize]
         // GET: Foods/Delete/5
         public ActionResult Delete(int? id)
         {

@@ -14,5 +14,6 @@ namespace FitFriend.Models
         public string Description { get; set; }
         [Required]
         public int CaloriesBurned { get; set; }
+        public string ApplicationUserID { get; set; }
     }
 }
