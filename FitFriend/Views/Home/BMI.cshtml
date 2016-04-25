@@ -7,16 +7,98 @@
 
 <head>
     <title>BMI</title>
+
+    <style type= "text/css">
+        .calc-bmi
+        {
+            border:2px solid #00ff90;
+            padding:10px 40px;
+            background:#0ff;
+            width:300px;
+            border-radius:20px;
+            box-shadow: 10px 10px 2px #00ff21;
+            text-align: center;         
+        }
+
+        .bmi-category
+        {
+            border:2px solid #ff00dc;
+            padding:10px 40px;
+            background:#ff6a00;
+            width:300px;
+            border-radius:20px;
+            box-shadow: 10px 10px 2px #ff006e;
+            text-align: center;         
+        }
+
+
+    </style>
 </head>
 <body>
+    <div class= "calc-bmi">
     <h3>BMI</h3>
     <br />
-    <label>Weight: <input type= "weight" name= "weight" id= "weight" /> (lb) </label>
+    <label>Weight: <input type= "text" name= "weight" id= "weight" /> (kg) </label>
     <br />
     <br />
-    <label>Height: <input type= "height" name= "height" id= "height" /> (ft) </label>
+    <label>Height: <input type= "text" name= "height" id= "height" /> (cm) </label>
     <br />
     <br />
-    <input type= "button" name= "Check!" value= "Check" />
-    <input type= "reset" name= "Reset" value= "Reset" />
+    <input type= "button" name= "Check" value= "Check!" onClick= "BMICalc()"/>
+    <input type= "reset" name= "Reset" value= "Reset" onClick= "Reset()"/>
+    </div>
+    <br />
+    <br />
+    <div class= "bmi-category">
+    
+        <h4>BMI Categories:</h4>
+        <p>
+        Underweight = < 18.5 
+        <br />
+        Normal weight = 18.5–24.9
+        <br />
+        Overweight = 25–29.9
+        <br />
+        Obesity = 30 or greater                                        
+        </p>
+    </div>
 </body>
+
+<script>
+
+    function BMICalc()
+    {
+        var w_input = document.getElementById('weight');
+        var h_input = document.getElementById('height');
+
+        var w = parseInt(w_input.value);
+        var h = parseInt(h_input.value);
+
+        h = h / 100;
+
+        var errMsg = "";
+
+        if (w <= 0)
+            errMsg = errMsg + "Weight cannot be negative or zero! \n";
+
+        if (h <= 0)
+            errMsg = errMsg + "Height cannot be negative or zero!";
+
+        if (errMsg != "")
+        {
+            alert(errMsg);
+        }
+        else
+        {
+            var bmi = ((w) / (h * h));
+
+            alert("Your BMI is " + bmi.toFixed(2));
+        }
+    }
+
+    function Reset()
+    {
+        document.getElementById("weight").value = "";
+        document.getElementById("height").value = "";
+    }
+</script>
